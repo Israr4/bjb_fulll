@@ -1,0 +1,15 @@
+
+ 
+{% extends "base.html" %} {% block head %} {{ super() }}
+<!-- block head   means that it over ride only head  of base.html  -->
+<!-- super is used to inherit every thing from parent class  -->
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename= 'extended_beauty.css') }}"
+/>
+{% endblock %}
+
+
+{%block content%}
+    <h1>Welcome, {{namme}}!</h1>   <!--It display current user name who logged in-->
+{% endblock %}

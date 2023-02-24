@@ -1,0 +1,46 @@
+<!-- This is a home page -->
+ 
+{% extends "base.html" %} {% block head %} {{ super() }}
+<!-- block head   means that it over ride only head  of base.html  -->
+<!-- super is used to inherit every thing from parent class  -->
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename= 'extended_beauty.css') }}"
+/>
+<!-- we use that css fil e -->
+
+
+{% endblock %} 
+
+
+ 
+{% block content %} 
+<div id="intro">
+  {% with messages = get_flashed_messages() %} {% if messages %}
+  <div class="notification is-success">
+    {{ messages[0] }}
+  </div>
+  {% endif %} {% endwith %}
+
+
+  <h1>
+    Hello!
+  </h1>
+
+  <!-- in center it shows a url pics and paragraph in left alignment-->
+  <center>
+    <img
+      src="{{ url_for('static', filename= 'images/pushup.png') }}"  
+      alt="push-ups boi"
+      height="200px"
+    />
+  </center>
+  <p>
+    Welcome to your pushups-logger! <br />This web app is a minimal clone of
+    to implement basic CRUD and User Authentication functionality using Flask. You
+    can add your push-ups workout here, track and visualise(<i
+      >update coming soon</i
+    >) them.
+  </p>
+</div>
+{% endblock %}
