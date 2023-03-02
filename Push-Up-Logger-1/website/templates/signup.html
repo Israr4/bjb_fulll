@@ -1,0 +1,89 @@
+ 
+{% extends "base_client.html" %} {% block head %} {{ super() }}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename= 'extended_beauty.css') }}"
+/>
+{% endblock %}
+
+
+{% block content %}
+
+<!-- <div class="has-bg-img   text-dark ">
+  <img class="bg-img"
+   src="{{ url_for('static', filename= 'images/client.jpg') }}" 
+   alt="hostel background image"
+   height="850px"
+   width="1930px">
+</div> -->
+
+<div class = "centered">
+ <div class="form">
+  <form method="POST"  action="/signup" >   <!--we use form from form bootstrap to show signup details-->
+    <h2>Client Sign Up</h2>
+    
+
+   {#<!-- this flash message is also used if email exist already-->#} 
+   {% with messages = get_flashed_messages() %} {% if messages %}
+    <div class="notification is-danger">
+      {{ messages[0] }}. Go to
+      <a href="{{ url_for('auths.login') }}">login page</a>.
+    </div>
+    {% endif %} {% endwith %} 
+
+
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        name="email"
+        placeholder="Enter email"
+      />
+    </div>
+
+    <div class="form-group">
+        <label for="fullname">Full Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="fullname"
+          name="fullname"    
+          placeholder="Enter full name"
+        />
+        <!--we use this name="fullname" in auth.py to request get it -->
+      </div>
+
+    <div class="form-group">
+      <label for="password1">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password1"
+        name="password1"
+        placeholder="Enter Password"
+      />
+
+    <div class="form-group">
+        <label for="password2">Confirm Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password2"
+          name="password2"
+          placeholder="Password Confirmation"
+        />
+    </div>
+
+
+<div class="form-group ">
+      You may Login from 
+      <a href="{{ url_for('auths.login') }}">login page</a> here .
+    </div>
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+  </form>
+ </div>
+</div>
+
+{% endblock %}

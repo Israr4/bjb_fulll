@@ -1,0 +1,551 @@
+
+
+{% extends "base_admin.html" %} {% block head %} {{ super() }}
+<!-- block head   means that it over ride only head  of base.html  -->
+<!-- super is used to inherit every thing from parent class  -->
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename= 'adminprofile.css') }}"
+/>
+{% endblock %}
+
+
+{%block content%}
+
+    <!-- <h1>Welcome, {{namme}}!</h1>   It display current user name who logged in -->
+ 
+
+
+<section class="py-5 header">
+  <div class="container py-10">
+      <header class="text-center mb-5 pb-5 text-white">
+          <h1 class="display-4">{{namme}} Loginned</h1>
+          
+      </header>
+
+
+      <div class="row">
+          <div class="col-md-3">
+              <!-- Tabs nav -->
+              <div class="nav flex-column nav-pills nav-pills-custom" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                  <a class="nav-link mb-3 p-3 shadow active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
+                      <i class="fa fa-user-circle-o mr-2"></i>
+                      <span class="font-weight-bold small text-uppercase">Home</span></a>
+
+                  <a class="nav-link mb-3 p-3 shadow " id="v-pills-registercustomer-tab" data-toggle="pill" href="#v-pills-registercustomer" role="tab" aria-controls="v-pills-registercustomer" aria-selected="true">
+                    <i class="fa fa-user-circle-o mr-2"></i>
+                    <span class="font-weight-bold small text-uppercase">
+                      Register Customer </span></a>
+
+                  <a class="nav-link mb-3 p-3 shadow"  id="v-pills-customeraccount-tab" data-toggle="pill"  role="tab"  href="#v-pills-customeraccount" aria-controls="v-pills-customeraccount" aria-selected="false">
+                      <i class="fa fa-star mr-2"></i>
+                      <span class="font-weight-bold small text-uppercase">Customer Accounts Detail</span></a>
+
+                  <a class="nav-link mb-3 p-3 shadow" id="v-pills-addstaff-tab" data-toggle="pill" href="#v-pills-addstaff" role="tab" aria-controls="v-pills-addstaff" aria-selected="false">
+                      <i class="fa fa-check mr-2"></i>
+                      <span class="font-weight-bold small text-uppercase">Add Staff</span></a>
+
+                  <a class="nav-link mb-3 p-3 shadow" id="v-pills-viewstaff-tab" data-toggle="pill" href="#v-pills-viewstaff" role="tab" aria-controls="v-pills-viewstaff" aria-selected="false">
+                    <i class="fa fa-check mr-2"></i>
+                    <span class="font-weight-bold small text-uppercase">View Staff</span></a>
+
+                  <a class="nav-link mb-3 p-3 shadow" id="v-pills-hostelcustomer-tab" data-toggle="pill" href="#v-pills-hostelcustomer" role="tab" aria-controls="v-pills-hostelcustomer" aria-selected="false">
+                    <i class="fa fa-check mr-2"></i>
+                    <span class="font-weight-bold small text-uppercase">Hostel Customer Detail</span></a>  
+
+                  <a class="nav-link mb-3 p-3 shadow" id="v-pills-messmanagement-tab" data-toggle="pill" href="#v-pills-messmanagement" role="tab" aria-controls="v-pills-messmanagement" aria-selected="false">
+                    <i class="fa fa-check mr-2"></i>
+                    <span class="font-weight-bold small text-uppercase">Mess Management</span></a>  
+
+                    <a class="nav-link mb-3 p-3 shadow" id="v-pills-messdetail-tab" data-toggle="pill" href="#v-pills-messdetail" role="tab" aria-controls="v-pills-messdetail" aria-selected="false">
+                      <i class="fa fa-check mr-2"></i>
+                      <span class="font-weight-bold small text-uppercase">Mess Detail</span></a>   
+
+                  <a class="nav-link mb-3 p-3 shadow" id="v-pills-laundrymanagement-tab" data-toggle="pill" href="#v-pills-laundrymanagement" role="tab" aria-controls="v-pills-laundrymanagement" aria-selected="false">
+                    <i class="fa fa-check mr-2"></i>
+                    <span class="font-weight-bold small text-uppercase">Laundry Management</span></a>  
+
+                  <a class="nav-link mb-3 p-3 shadow" id="v-pills-paymentmanagement-tab" data-toggle="pill" href="#v-pills-paymentmanagement" role="tab" aria-controls="v-pills-paymentmanagement" aria-selected="false">
+                    <i class="fa fa-check mr-2"></i>
+                    <span class="font-weight-bold small text-uppercase">Payment Management</span></a>    
+  
+
+
+                  </div>
+          </div>
+
+
+
+
+          <div class="col-md-9">
+              <!-- Tabs content -->
+              <div class="tab-content bg-white" style="height: 700px; overflow: auto" id="v-pills-tabContent">
+
+
+                  <div class="tab-pane fade shadow rounded bg-white show active p-5" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                      <h4 class="font-italic mb-4">Home</h4>
+                      <p class="font-italic text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  </div>
+                  
+                <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-registercustomer" role="tabpanel" aria-labelledby="v-pills-registercustomer-tab">
+                  <h4 class="font-italic mb-4 center">
+                    <div class = text-center>Register Customer</div>
+                  </h4>
+          
+                  <div class = "centered">
+                      <form method="POST"  action="/adminsignupclient" >   <!--yeh path wo ha jo auth ma hum na usa dia hua ha-->
+
+                       
+                        <div class="form-group">
+                          <label for="email">Email address</label>
+                          <input
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            name="email"
+                            placeholder="Enter email"
+                          />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fullname">Full Name</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="fullname"
+                              name="fullname"    
+                              placeholder="Enter full name"
+                            />
+                            <!--we use this name="fullname" in auth.py to request get it -->
+                          </div>
+
+                        <div class="form-group">
+                          <label for="password1">Password</label>
+                          <input
+                            type="password"
+                            class="form-control"
+                            id="password1"
+                            name="password1"
+                            placeholder="Enter Password"
+                          />
+
+                        <div class="form-group">
+                            <label for="password2">Confirm Password</label>
+                            <input
+                              type="password"
+                              class="form-control"
+                              id="password2"
+                              name="password2"
+                              placeholder="Password Confirmation"
+                            />
+                        </div>
+                      </div>
+                      <div class="text-center">
+                          <button type="submit" class="btn btn-primary ">Register</button>
+                      </div>
+
+                    </form>
+                </div>
+              </div>
+                  
+                  
+               <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-customeraccount" role="tabpanel" aria-labelledby="v-pills-customeraccount-tab"> 
+                <h4 class="font-italic mb-4">Customer Accounts Detail</h4>
+                <div class="table-responsive" >
+                  <form method="GET"  action="/allclients" >
+                  <table class="table table-hover" style="width: 700px;">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col"> <a href="{{url_for('view.all_clients')}}"> Id </a></th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Full Name</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                      {% for i in students %}
+                        <tr>
+                          <td>{{ i.id}}</td>
+                          <td>{{ i.email}}</td>
+                          <td>{{ i.fullname}}</td>
+                        </tr>
+                      {% endfor %}
+                
+                      </tbody>
+                    </table>
+                </form>
+                 </div>
+               </div> 
+                  
+
+
+
+                  <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-addstaff" role="tabpanel" aria-labelledby="v-pills-addstaff-tab">
+                      <h4 class="font-italic mb-4">Add Staff</h4>
+
+                      <div class = "centered">
+                        <form method="POST"  action="/adminsignupstaff" >   <!--yeh path wo ha jo auth ma hum na usa dia hua ha-->
+  
+                         
+                          <div class="form-group">
+                            <label for="fullname">Full Name</label>
+                            <input
+                              type="fullname"
+                              class="form-control"
+                              id="fullname"
+                              name="fullname"
+                              placeholder="Enter Full Name"
+                            />
+                          </div>
+  
+                          <div class="form-group">
+                              <label for="phonenumber">Phone Number</label>
+                              <input
+                                type="phonenumber"
+                                class="form-control"
+                                id="phonenumber"
+                                name="phonenumber"    
+                                placeholder="Enter Phone number"
+                              />
+                              <!--we use this name="fullname" in auth.py to request get it -->
+                            </div>
+  
+                          <div class="form-group">
+                            <label for="cnic">CNIC</label>
+                            <input
+                              type="cnic"
+                              data-inputmask="'mask': '99999-9999999-9'"
+                              class="form-control"
+                              id="cnic"
+                              name="cnic"
+                              placeholder="Enter cnic"
+                            />
+  
+                          <div class="form-group">
+                              <label for="designation">Designation</label>
+                              <input
+                                type="designation"
+                                class="form-control"
+                                id="designation"
+                                name="designation"
+                                placeholder="Enter Designation"
+                              />
+                          </div>
+                          <div class="text-center">
+                            <button type="submit" class="btn btn-primary ">Add Staff</button>
+                        </div>
+                      </form>
+                      </div>
+                  </div>
+                </div>
+
+
+                  <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-viewstaff" role="tabpanel" aria-labelledby="v-pills-viewstafftab">
+                    <h4 class="font-italic mb-4">View Staff</h4>
+                      <div class="table-responsive" >
+                   
+                        <form method="GET"  action="/allstaff" >
+                        <table class="table table-hover" style="width: 700px;">
+                          <thead class="thead-dark">
+                            <tr>
+                              <th scope="col"> <a href="{{url_for('view.all_staff')}}"> Id </a></th>
+                              <th scope="col">Full Name</th>
+                              <th scope="col">Phone Number</th>
+                              <th scope="col">CNIC Number</th>
+                              <th scope="col">Designation</th>
+                              <th scope="col">FKey Id</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            
+                            {% for i in staffs %}
+                              <tr>
+                                <td>{{ i.idmodel}}</td>
+                                <td>{{ i.namemodel}}</td>
+                                <td>{{ i.numbermodel}}</td>
+                                <td>{{ i.cnicmodel}}</td>
+                                <td>{{ i.designationmodel}}</td>
+                                <td>{{ i.user_idmodel}}</td>
+                                <td>
+                                  <a
+                                    href="{{ url_for('view.update_staff', staff_id=i.idmodel) }}"
+                                    class="btn btn-outline-primary"
+                                    role="button"
+                                  >
+                                    Edit
+                                  </a>
+                                </td>
+                                <td>
+                                  <a
+                                    href="{{ url_for('view.delete_staff', staff_id=i.idmodel) }}"
+                                    class="btn btn-outline-danger"
+                                    role="button"
+                                  >
+                                    Delete
+                                  </a>
+                                </td>
+                              </tr>
+                            {% endfor %}
+                      
+                            </tbody>
+                          </table>
+                        </form>
+
+                        {% if request.url == "{{ url_for('view.update_staff', staff_id=staff.idmodel) }}" %}
+                                <form
+                                  method="POST"
+                                  action="/staff/<int:staff_id>/update"    
+                                >
+      
+      
+                                <div class="form-group">
+                                  <label for="fullname">Full Name</label>
+                                  <input
+                                    type="fullname"
+                                    class="form-control"
+                                    id="fullname"
+                                    name="fullname"
+                                    placeholder="Enter Full Name"
+                                  />
+                                </div>
+        
+                                <div class="form-group">
+                                    <label for="phonenumber">Phone Number</label>
+                                    <input
+                                      type="phonenumber"
+                                      class="form-control"
+                                      id="phonenumber"
+                                      name="phonenumber"    
+                                      placeholder="Enter Phone number"
+                                    />
+                                    <!--we use this name="fullname" in auth.py to request get it -->
+                                  </div>
+        
+                                <div class="form-group">
+                                  <label for="cnic">CNIC</label>
+                                  <input
+                                    type="cnic"
+                                    data-inputmask="'mask': '99999-9999999-9'"
+                                    class="form-control"
+                                    id="cnic"
+                                    name="cnic"
+                                    placeholder="Enter cnic"
+                                  />
+        
+                                <div class="form-group">
+                                    <label for="designation">Designation</label>
+                                    <input
+                                      type="designation"
+                                      class="form-control"
+                                      id="designation"
+                                      name="designation"
+                                      placeholder="Enter Designation"
+                                    />
+                                </div>
+                                <div class="text-center">
+                                  <button type="submit" class="btn btn-primary ">Update Staff</button>
+                              </div>
+                                </form>
+                            
+                        {% endif %}
+                     </div> 
+                    </div> 
+                
+
+                  <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-hostelcustomer" role="tabpanel" aria-labelledby="v-pills-hostelcustomer">
+                    <h4 class="font-italic mb-4">Booked Room Detail</h4>
+                    
+                    <div class="table-responsive" >
+                      <form method="GET"  action="/allroomadmin" >
+                      <table class="table table-hover" style="width: 700px;">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col"> <a href="{{url_for('view.all_rooms_admin')}}"> Id </a></th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Full Name</th>
+                            <th scope="col">CNIC No.</th>
+                            <th scope="col">Contact No.</th>
+                            <th scope="col">Total Duration</th>
+                            <th scope="col">Seater</th>
+                            <th scope="col">Room No.</th>
+                            <th scope="col">Rent</th>
+                            <th scope="col">Address</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          
+                          {% for i in roomss %}
+                            <tr>
+                              <td>{{ i.customerid}}</td>
+                              <td>{{ i.customeremail}}</td>
+                              <td>{{ i.customerfullname}}</td>
+                              <td>{{ i.customercnic}}</td>
+                              <td>{{ i.customercontactno}}</td>
+                              <td>{{ i.customertotalduration}}</td>
+                              <td>{{ i.customerseater}}</td>
+                              <td>{{ i.customerroomno}}</td>
+                              <td>{{ i.customerfees}}</td>
+                              <td>{{ i.customeraddress}}</td>
+                            </tr>
+                          {% endfor %}
+                    
+                          </tbody>
+                        </table>
+                    </form>
+                     </div>
+
+                  </div>
+
+                  <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-messmanagement" role="tabpanel" aria-labelledby="v-pills-messmanagement">
+                    <h4 class="font-italic mb-4">Mess Management</h4>
+                    
+                    <div class = "centered">
+                      <form method="POST"  action="/adminsignupmess" >   <!--yeh path wo ha jo auth ma hum na usa dia hua ha-->
+
+                       
+                        <div class="form-group">
+                          <label for="day">Day</label>
+                          <input
+                            type="fullname"
+                            class="form-control"
+                            id="day"
+                            name="day"
+                            placeholder="Day"
+                          />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="breakfast">BreakFast</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="breakfast"
+                              name="breakfast"    
+                              placeholder="BreakFast"
+                            />
+                            <!--we use this name="fullname" in auth.py to request get it -->
+                          </div>
+
+                        <div class="form-group">
+                          <label for="lunch">Lunch</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="lunch"
+                            name="lunch"
+                            placeholder="Lunch"
+                          />
+
+                        <div class="form-group">
+                            <label for="dinner">Dinner</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="dinner"
+                              name="dinner"
+                              placeholder="Dinner"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                          <label for="date">Date</label>
+                          <input
+                            type="designation"
+                            class="form-control"
+                            id="date"
+                            name="date"
+                            placeholder="Date"
+                          />
+                      </div>
+                        <div class="text-center">
+                          <button type="submit" class="btn btn-primary ">Add Mess Detail</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-messdetail" role="tabpanel" aria-labelledby="v-pills-messdetail">
+                <h4 class="font-italic mb-4">Mess Detail</h4>
+                
+                  <div class="table-responsive" >
+                    <form method="GET"  action="/allmessdmin" >
+                    <table class="table table-hover" style="width: 700px;">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th scope="col"> <a href="{{url_for('view.all_mess_admin')}}"> Id </a></th>
+                          <th scope="col">Day</th>
+                          <th scope="col">BreakFast</th>
+                          <th scope="col">Lunch</th>
+                          <th scope="col">Dinner</th>
+                          <th scope="col">Date</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        
+                        {% for i in messs %}
+                          <tr>
+                            <td>{{ i.messid}}</td>
+                            <td>{{ i.messday}}</td>
+                            <td>{{ i.messbreakfast}}</td>
+                            <td>{{ i.messlunch}}</td>
+                            <td>{{ i.messdinner}}</td>
+                            <td>{{ i.messdate}}</td>
+                          </tr>
+                        {% endfor %}
+                  
+                        </tbody>
+                      </table>
+                  </form>
+              </div>
+            </div>
+         
+
+                 
+
+                  <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-laundrymanagement" role="tabpanel" aria-labelledby="v-pills-laundrymanagement">
+                    <h4 class="font-italic mb-4">Laundry Management</h4>
+                    <div class="table-responsive" >
+                      <form method="GET"  action="/alllaundryadmin" >
+                      <table class="table table-hover" style="width: 700px;">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col"> <a href="{{url_for('view.all_laundry_admin')}}"> Id </a></th>
+                            <th scope="col">Full Name</th>
+                            <th scope="col">Contact No.</th>
+                            <th scope="col">Item</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          
+                          {% for i in laundrry %}
+                            <tr>
+                              <td>{{ i.laundryid}}</td>
+                              <td>{{ i.laundaryname}}</td>
+                              <td>{{ i.laundarycontactno}}</td>
+                              <td>{{ i.laundryitem}}</td>
+                            </tr>
+                          {% endfor %}
+                    
+                          </tbody>
+                        </table>
+                    </form>
+                </div>
+                  </div>
+
+                  <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-paymentmanagement" role="tabpanel" aria-labelledby="v-pills-paymentmanagement">
+                    <h4 class="font-italic mb-4">Payment Management</h4>
+                    <p class="font-italic text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  </div>
+
+
+
+                </div>     
+         </div> 
+      </div>
+  </div>
+</section>
+
+{% endblock %}

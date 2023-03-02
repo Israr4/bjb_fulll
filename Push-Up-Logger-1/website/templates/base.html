@@ -1,0 +1,190 @@
+<!-- www.bootstrapcdn.com  -->
+<!-- navbar bootstrap  -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- block is a control statement for to override head from inherited template now that head is to be override in other template html file  -->
+    {% block head %}
+    <title>Koheshar Hostel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename= 'images/hosteicon.ico') }}"   
+    />
+    <!-- path for a file  -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arvo&display=swap"
+      rel="stylesheet"
+    />
+    <!-- path for a file  -->
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename= 'beauty.css') }}"
+    />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <!-- These three links are copy from www.bootstrapcdn.com  -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- thats the library for font awesome to display fb instagram icons -->
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    
+    <!-- code for mobile phone and email validation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
+
+    
+    {% endblock %}
+  </head>
+
+
+  <!-- code copied from navbar bootstrap  -->
+  <body>
+    <nav class="navbar navbar-expand-lg d-flex align-items-center justify-content-between navbar-color">
+      <a class="navbar-brand" href="{{ url_for('view.index') }}"
+        ><span class="glyphicon glyphicon-user"></span>Koheshar Boys Hostel</a>
+        <!-- view is a name of blueprint in views.py and index is the name of function  -->
+
+        <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation" >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="ms-auto" id="navbarSupportedContent">
+
+        {% if current_user.is_authenticated %}
+        <!-- <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a
+              href="{{ url_for('view.user_workouts') }}"
+              class="btn btn-outline-secondary"
+              role="button"
+              >All Workouts</a>
+          </li>
+          <li class="nav-item">
+            <a
+              href="{{ url_for('view.profile') }}"
+              class="btn btn-outline-secondary"
+              role="button"
+              style="margin-left: 4px;"
+              >Account</a>
+          </li>
+        </ul>
+
+        <a
+        href="{{ url_for('view.new_workout') }}"
+        class="btn btn-outline-primary"
+        role="button"
+        >Add New Workout</a > -->
+
+        <a
+        href="{{ url_for('auths.logout') }}"
+        class="btn btn-outline-danger"
+        role="button"
+        style="margin-left: 4px;"
+        >Log Out</a > 
+        {%endif%}
+
+         
+
+        {#<!-- {% if not current_user.is_authenticated %}
+        <ul class="nav navbar-nav navbar-right">
+        <li>
+        <a
+          href="{{ url_for('auths.signup') }}"  class="btn btn-outline-primary" 
+          role="button"
+          style="margin-left: 1400px;"  
+          ><span class="glyphicon glyphicon-user"></span>Admin Signup</a>
+        </li>
+
+        <li>
+          <a
+            href="{{ url_for('auths.login') }}"
+            class="btn btn-outline-primary"
+            role="button"
+            style="margin-left: 4px;"
+            ><span class="glyphicon glyphicon-log-in"></span>Client Login</a>
+        </li>
+        </ul>
+        {% endif %} -->#}
+
+        {% if not current_user.is_authenticated %}
+          <ul class="nav navbar-nav">
+            <li>
+              <a
+                href="{{ url_for('auths.loginadmin') }}"
+                class="btn btn-outline-primary"
+                role="button"
+                ><span class="glyphicon glyphicon-log-in"></span>Admin Page</a>
+            </li>
+          <li>
+            <a
+              href="{{ url_for('auths.signup') }}"
+              class="btn btn-outline-primary"
+              role="button"
+              style="margin-left: 2px;"
+              ><span class="glyphicon glyphicon-log-in"></span>Client Page</a>
+          </li>
+          </ul>
+          {% endif %}
+            
+      </div>
+    </nav>
+
+
+
+    {#<!--This whole code is used to for displaying flash messages in auth.py with if cinditions-->#}
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %} {% for category, message in messages %} {% if category ==
+        'error' %}
+        <div class="alert alert-danger alter-dismissable fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% else %}
+        <div class="alert alert-success alter-dismissable fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endif %} {% endfor %} {% endif %} {% endwith %}
+
+
+
+    {% block content %} {% endblock %}
+  </body>
+</html>

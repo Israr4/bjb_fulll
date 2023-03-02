@@ -1,0 +1,442 @@
+
+ 
+{% extends "base_client.html" %} {% block head %} {{ super() }}
+
+<!-- block head   means that it over ride only head  of base.html  -->
+<!-- super is used to inherit every thing from parent class  -->
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename= 'profile.css') }}"
+/>
+{% endblock %}
+
+
+{%block content%}
+
+    <!-- <h1>Welcome, {{namme}}!</h1>   It display current user name who logged in -->
+ 
+
+
+<section class="py-5 header">
+  <div class="container py-10">
+      <header class="text-center mb-5 pb-5 text-white">
+          <h1 class="display-4">{{namme}} Loginned</h1>
+          
+      </header>
+
+
+      <div class="row">
+          <div class="col-md-3">
+              <!-- Tabs nav -->
+              <div class="nav flex-column nav-pills nav-pills-custom" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                  <a class="nav-link mb-3 p-3 shadow active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
+                      <i class="fa fa-user-circle-o mr-2"></i>
+                      <span class="font-weight-bold small text-uppercase">Home</span></a>
+
+                  <a class="nav-link mb-3 p-3 shadow " id="v-pills-registercustomer-tab" data-toggle="pill" href="#v-pills-registercustomer" role="tab" aria-controls="v-pills-registercustomer" aria-selected="true">
+                    <i class="fa fa-user-circle-o mr-2"></i>
+                    <span class="font-weight-bold small text-uppercase">
+                      Register Customer </span></a>
+
+              
+                  <a class="nav-link mb-3 p-3 shadow" id="v-pills-bookhostel-tab" data-toggle="pill" href="#v-pills-bookhostel" role="tab" aria-controls="v-pills-bookhostel" aria-selected="false">
+                    <i class="fa fa-check mr-2"></i>
+                    <span class="font-weight-bold small text-uppercase">Book Hostel Room</span></a>
+
+                  <a class="nav-link mb-3 p-3 shadow" id="v-pills-hostelcustomer-tab" data-toggle="pill" href="#v-pills-hostelcustomer" role="tab" aria-controls="v-pills-hostelcustomer" aria-selected="false">
+                    <i class="fa fa-check mr-2"></i>
+                    <span class="font-weight-bold small text-uppercase">Room Booking Detail</span></a>  
+
+                  <a class="nav-link mb-3 p-3 shadow" id="v-pills-messmanagement-tab" data-toggle="pill" href="#v-pills-messmanagement" role="tab" aria-controls="v-pills-messmanagement" aria-selected="false">
+                    <i class="fa fa-check mr-2"></i>
+                    <span class="font-weight-bold small text-uppercase">Mess Detail</span></a>  
+
+                  <a class="nav-link mb-3 p-3 shadow" id="v-pills-laundrymanagement-tab" data-toggle="pill" href="#v-pills-laundrymanagement" role="tab" aria-controls="v-pills-laundrymanagement" aria-selected="false">
+                    <i class="fa fa-check mr-2"></i>
+                    <span class="font-weight-bold small text-uppercase">Add Laundry </span></a>  
+                  
+                  <a class="nav-link mb-3 p-3 shadow" id="v-pills-laundrydetail-tab" data-toggle="pill" href="#v-pills-laundrydetail" role="tab" aria-controls="v-pills-laundrydetail" aria-selected="false">
+                    <i class="fa fa-check mr-2"></i>
+                    <span class="font-weight-bold small text-uppercase">Laundry Detail </span></a>    
+
+                  <a class="nav-link mb-3 p-3 shadow" id="v-pills-paymentmanagement-tab" data-toggle="pill" href="#v-pills-paymentmanagement" role="tab" aria-controls="v-pills-paymentmanagement" aria-selected="false">
+                    <i class="fa fa-check mr-2"></i>
+                    <span class="font-weight-bold small text-uppercase">Payment Management</span></a>    
+  
+
+
+                  </div>
+          </div>
+
+
+
+
+          <div class="col-md-9">
+              <!-- Tabs content -->
+              <div class="tab-content bg-white" style="height: 580px; overflow: auto" id="v-pills-tabContent">
+
+
+                  <div class="tab-pane fade shadow rounded bg-white show active p-5" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                      <h4 class="font-italic mb-4">Home</h4>
+                      <p class="font-italic text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  </div>
+                  
+                <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-registercustomer" role="tabpanel" aria-labelledby="v-pills-registercustomer-tab">
+                  <h4 class="font-italic mb-4 center">
+                    <div class = text-center>Register Customer</div>
+                  </h4>
+          
+                  <div class = "centered">
+                      <form method="POST"  action="/adminsignupclient" >   <!--yeh path wo ha jo auth ma hum na usa dia hua ha-->
+
+                       
+                        <div class="form-group">
+                          <label for="email">Email address</label>
+                          <input
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            name="email"
+                            placeholder="Enter email"
+                          />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fullname">Full Name</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="fullname"
+                              name="fullname"    
+                              placeholder="Enter full name"
+                            />
+                            <!--we use this name="fullname" in auth.py to request get it -->
+                          </div>
+
+                        <div class="form-group">
+                          <label for="password1">Password</label>
+                          <input
+                            type="password"
+                            class="form-control"
+                            id="password1"
+                            name="password1"
+                            placeholder="Enter Password"
+                          />
+
+                        <div class="form-group">
+                            <label for="password2">Confirm Password</label>
+                            <input
+                              type="password"
+                              class="form-control"
+                              id="password2"
+                              name="password2"
+                              placeholder="Password Confirmation"
+                            />
+                        </div>
+                      </div>
+                      <div class="text-center">
+                          <button type="submit" class="btn btn-primary ">Register</button>
+                      </div>
+
+                    </form>
+                </div>
+              </div>
+                  
+
+                  <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-bookhostel" role="tabpanel" aria-labelledby="v-pills-bookhostel">
+                    <h4 class="font-italic mb-4">Book Hostel Room</h4>
+                    
+
+                            <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                              <div class="card-body p-4 p-md-5">
+                                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Room Booking Form</h3>
+                                <form method="POST"  action="/customerregisterroom">
+                    
+                                  <div class="row">
+                                    <div class="col-md-6 mb-4">
+                    
+                                      <div class="form-outline">
+                                        <input type="text" id="email" name="email" class="form-control form-control-lg" placeholder="enter email"/>
+                                        <label class="form-label" for="email">Email</label>
+                                      </div>
+                    
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                    
+                                      <div class="form-outline">
+                                        <input type="text" id="fullname" name="fullname" class="form-control form-control-lg" placeholder="enter full name"/>
+                                        <label class="form-label" for="fulname">Full Name</label>
+                                      </div>
+                    
+                                    </div> 
+                                  </div>
+                    
+                                  <div class="row">
+                                    <div class="col-md-6 mb-4 d-flex align-items-center">
+                    
+                                      <div class="form-outline datepicker w-100">
+                                        <input type="text" class="form-control form-control-lg" id="phonenumber" name="phonenumber" placeholder="+92xxxxxxxxxx"/>
+                                        <label for="phonenumber" class="form-label">Contact Number</label>
+                                      </div>
+                    
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                    
+                                      <h6 class="mb-2 pb-1">Seater: </h6>
+                    
+                                      <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio"  id="seater" name="seater"
+                                          value="1 Seater" checked />
+                                        <label class="form-check-label" for="seater">1 seater</label>
+                                      </div>
+                    
+                                      <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio"  id="seater" name="seater"
+                                          value="2 Seater" />
+                                        <label class="form-check-label" for="seater">2 seater</label>
+                                      </div>
+                    
+                                    </div>
+                                  </div>
+                    
+                                  <div class="row">
+                                    <div class="col-md-6 mb-4 pb-2">
+                    
+                                      <div class="form-outline">
+                                        <input  id="cnic" class="form-control form-control-lg" name="cnic" placeholder="xxxxx-xxxxxxx-x"/>
+                                        <label class="form-label" for="cnic" >CNIC</label>
+                                      </div>
+                    
+                                    </div>
+                                    <div class="col-md-6 mb-4 pb-2">
+                    
+                                      <div class="form-outline">
+                                        <input  id="totalduration" name="totalduration" class="form-control form-control-lg" placeholder="total duration" />
+                                        <label class="form-label" for="totalduration">Total Duration</label>
+                                      </div>
+                    
+                                    </div>
+                                  </div>
+                    
+                                  <div class="row">
+                                    <div class="col-12">
+                    
+                                      <select class="select form-control-lg" name = "totalfees" id = "totalfees">
+                                        <option value="1" name = "totalfees" id = "totalfees" disabled>Fee status for month</option>
+                                        <option value="10000" name = "totalfees" id = "totalfees">10000 with food</option>
+                                        <option value="7000" name = "totalfees" id = "totalfees">7000 without food</option>
+                                      </select>
+                                      <label class="form-label" for="totalfees" name = "totalfees" id = "totalfees">Fee status for month</label>
+                                    </div>
+                                  </div>
+                                </br>
+                              </br>
+
+
+                              <div class="row">
+                                <div class="col-md-6 mb-4 pb-2">
+                
+                                  <div class="form-outline">
+                                    <input  id="roomno" name="roomno" class="form-control form-control-lg" placeholder="We have 20 Rooms avialable" />
+                                    <label class="form-label" for="roomno">Room Number</label>
+                                  </div>
+                                </div>
+                              </div>
+
+                            </br>
+                          </br>
+                                  <div class="row">
+                                    <div class="col-md-12 mb-4 pb-2">
+                    
+                                      <div class="form-outline">
+                                        <input  id="address" name="address" class="form-control form-control-lg" placeholder="enter address" />
+                                        <label class="form-label" for="address">Address</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                    
+                                  <div class="mt-4 pt-2">
+                                    <input class="btn btn-primary btn-lg" type="submit" value="Submit"  />
+                                  </div>
+                    
+                                </form>
+                              </div>
+                            </div>
+                        
+
+
+                  </div>
+
+                  <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-hostelcustomer" role="tabpanel" aria-labelledby="v-pills-hostelcustomer">
+                    <h4 class="font-italic mb-4">Room Booking Detail</h4>
+                    
+                    <div class="table-responsive" >
+                      <form method="GET"  action="/allrooms" >
+                      <table class="table table-hover" style="width: 700px;">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col"> <a href="{{url_for('view.all_rooms')}}"> Id </a></th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Full Name</th>
+                            <th scope="col">Contact No.</th>
+                            <th scope="col">Total Duration</th>
+                            <th scope="col">Seater</th>
+                            <th scope="col">Room No.</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          
+                          {% for i in roomss %}
+                            <tr>
+                              <td>{{ i.customerid}}</td>
+                              <td>{{ i.customeremail}}</td>
+                              <td>{{ i.customerfullname}}</td>
+                              <td>{{ i.customercontactno}}</td>
+                              <td>{{ i.customertotalduration}}</td>
+                              <td>{{ i.customerseater}}</td>
+                              <td>{{ i.customerroomno}}</td>
+
+                            </tr>
+                          {% endfor %}
+                    
+                          </tbody>
+                        </table>
+                    </form>
+                     </div>
+                   </div> 
+                  
+
+                  <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-messmanagement" role="tabpanel" aria-labelledby="v-pills-messmanagement">
+                    <h4 class="font-italic mb-4">Mess Detail</h4>
+                    
+                    <div class="table-responsive" >
+                      <form method="GET"  action="/allmessclient" >
+                      <table class="table table-hover" style="width: 700px;">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col"> <a href="{{url_for('view.all_mess_client')}}"> Id </a></th>
+                            <th scope="col">Day</th>
+                            <th scope="col">BreakFast</th>
+                            <th scope="col">Lunch</th>
+                            <th scope="col">Dinner</th>
+                            <th scope="col">Date</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          
+                          {% for i in messs %}
+                            <tr>
+                              <td>{{ i.messid}}</td>
+                              <td>{{ i.messday}}</td>
+                              <td>{{ i.messbreakfast}}</td>
+                              <td>{{ i.messlunch}}</td>
+                              <td>{{ i.messdinner}}</td>
+                              <td>{{ i.messdate}}</td>
+                            </tr>
+                          {% endfor %}
+                    
+                          </tbody>
+                        </table>
+                    </form>
+                </div>
+
+                  </div>
+
+                  <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-laundrymanagement" role="tabpanel" aria-labelledby="v-pills-laundrymanagement">
+                    <h4 class="font-italic mb-4">Laundry Management</h4>
+                    
+                    <div class = "centered">
+                      <form method="POST"  action="/clientsignuplaundry" >   <!--yeh path wo ha jo auth ma hum na usa dia hua ha-->
+
+                       
+                        <div class="form-group">
+                          <label for="name">Name</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="name"
+                            name="name"
+                            placeholder="Enter Name"
+                          />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactno">Contact No.</label>
+                            <input
+                              type="phonenumber"
+                              class="form-control"
+                              id="contactno"
+                              name="contactno"    
+                              placeholder="Enter Contact Number"
+                            />
+                            <!--we use this name="fullname" in auth.py to request get it -->
+                          </div>
+
+                        <div class="form-group">
+                          <label for="item">Item</label>
+                          <input
+                            type="item"
+                            class="form-control"
+                            id="item"
+                            name="item"
+                            placeholder="Enter Item"
+                          />
+                      </div>
+                      <div class="text-center">
+                          <button type="submit" class="btn btn-primary ">Add Laundry</button>
+                      </div>
+
+                    </form>
+                </div>
+              </div>
+
+
+
+              <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-laundrydetail" role="tabpanel" aria-labelledby="v-pills-laundrydetail">
+                <h4 class="font-italic mb-4">Laundry Detail</h4>
+                
+                <div class="table-responsive" >
+                  <form method="GET"  action="/alllaundryclient" >
+                  <table class="table table-hover" style="width: 700px;">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col"> <a href="{{url_for('view.all_laundry_client')}}"> Id </a></th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Contact No.</th>
+                        <th scope="col">Item</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                      {% for i in laundrry %}
+                        <tr>
+                          <td>{{ i.laundryid}}</td>
+                          <td>{{ i.laundaryname}}</td>
+                          <td>{{ i.laundarycontactno}}</td>
+                          <td>{{ i.laundryitem}}</td>
+                        </tr>
+                      {% endfor %}
+                
+                      </tbody>
+                    </table>
+                </form>
+            </div>
+                
+          </div>
+
+                  <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-paymentmanagement" role="tabpanel" aria-labelledby="v-pills-paymentmanagement">
+                    <h4 class="font-italic mb-4">Payment Management</h4>
+                    <p class="font-italic text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  </div>
+
+
+
+              
+         </div> 
+      </div>
+  </div>
+</section>
+
+{% endblock %}
+
+
