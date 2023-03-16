@@ -1,0 +1,8 @@
+prefix=/home/maanz-ai/mathpractice_ws/install
+
+Name: mathpractice
+Description: Description of mathpractice
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
