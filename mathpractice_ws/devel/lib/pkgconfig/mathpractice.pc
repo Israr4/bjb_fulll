@@ -1,4 +1,4 @@
-prefix=/home/maanz-ai/mathpractice_ws/devel
+prefix=/home/maanz-ai/Desktop/github_shellscriptpractice/bjb_fulll/mathpractice_ws/devel
 
 Name: mathpractice
 Description: Description of mathpractice

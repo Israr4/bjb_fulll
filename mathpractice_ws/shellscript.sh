@@ -61,6 +61,16 @@ sleep 1m 50s
 rviz riviz -f my_frame
 
 
+#we use this code in project of flask in auth.py file
 
+# vcmd = ['/home/maanz-ai/mathpractice_ws/./shellscript.sh']   # we write this for run the shell script
+# def execute(cmd):
+#     os.system(cmd)
+
+
+# @auths.route('/s', methods = ['GET'])
+# def executeScript():
+#     output = execute('/home/maanz-ai/mathpractice_ws/./shellscript.sh')
+#     return output
 
 

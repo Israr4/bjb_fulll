@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "mathpractice"
-PROJECT_SPACE_DIR = "/home/maanz-ai/mathpractice_ws/devel"
+PROJECT_SPACE_DIR = "/home/maanz-ai/Desktop/github_shellscriptpractice/bjb_fulll/mathpractice_ws/devel"
 PROJECT_VERSION = "0.0.0"

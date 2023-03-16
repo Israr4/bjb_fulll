@@ -1,2 +1,2 @@
 mathpractice
--DPYTHON_EXECUTABLE=/usr/bin/python3 -DCATKIN_DEVEL_PREFIX=/home/maanz-ai/mathpractice_ws/devel -DCMAKE_INSTALL_PREFIX=/home/maanz-ai/mathpractice_ws/install -G Unix Makefiles
+-DPYTHON_EXECUTABLE=/usr/bin/python3 -DCATKIN_DEVEL_PREFIX=/home/maanz-ai/Desktop/github_shellscriptpractice/bjb_fulll/mathpractice_ws/devel -DCMAKE_INSTALL_PREFIX=/home/maanz-ai/Desktop/github_shellscriptpractice/bjb_fulll/mathpractice_ws/install -G Unix Makefiles

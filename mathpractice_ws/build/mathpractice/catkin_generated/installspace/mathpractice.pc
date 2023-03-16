@@ -1,4 +1,4 @@
-prefix=/home/maanz-ai/mathpractice_ws/install
+prefix=/home/maanz-ai/Desktop/github_shellscriptpractice/bjb_fulll/mathpractice_ws/install
 
 Name: mathpractice
 Description: Description of mathpractice
