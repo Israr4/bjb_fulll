@@ -1,7 +1,12 @@
 from flask import Flask,request
 from os import path
+import os
 from flask_sqlalchemy import SQLAlchemy #importing database
 from flask_login import LoginManager
+import psycopg2
+from dotenv import load_dotenv
+from sqlalchemy.dialects import postgresql
+
 
 db = SQLAlchemy()  #just like constructor initializing database with variable db to use it later with variable name db
 
@@ -16,12 +21,20 @@ def create_app():
     app.register_blueprint(auths)
 
 
-
     app.config['SECRET_KEY'] = 'hjshjhdjah kjshkjdhjs'    #Encypting session and cookies
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite' # Syntax for database
-    db.init_app(app)      #initialize app with database
-
+    # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite' # Syntax for database
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:123456789@localhost/postgredatabase'  # postgresql = name of database(synatax),  postgres(default set)  = rootuser, tiger = 123456789, postgredatabase = name of database that we created
     
+    # DB_HOST = "localhost"
+    # DB_NAME = "postgresql"
+    # DB_USER = "israr786@gmail.com"
+    # DB_PASS = "123456789"
+    # conn = psycopg2.connect(dbname = DB_NAME, user = DB_USER, password = DB_PASS, host = DB_HOST)
+    
+    # db = SQLAlchemy(conn)
+    db.init_app(app)      #initialize app with database
+    # db = SQLAlchemy(app)
+
     from .model import User       # this code is used to store  data of signup details in database and with the help of this data we login
     from .model import AdminUser
     from .model import Staff
@@ -32,26 +45,32 @@ def create_app():
         db.create_all()           # database with the name of db.sqlite in instance folder is created by calling the function for 
 
     login_manager = LoginManager()    #database
-    login_manager.login_view = 'auths.login','auths.loginadmin'
+    login_manager.login_view = 'auths.login' 
+    login_manager.login_view = 'auths.loginadmin'
     login_manager.init_app(app)
 
     @login_manager.user_loader    #user loader tell flask login to find a specific  user from id that is stored in session cookies
     def load_user(id):
         return User.query.get(int(id))
-
+# 
+    # @login_manager.user_loader
     def load_userr(adminid):
         return AdminUser.query.get(int(adminid))
 
+    # @login_manager.user_loader
     def load_users(idmodel):
         return Staff.query.get(int(idmodel))
-        
+
+    # @login_manager.user_loader   
     def load_userss(customerid):
         return Rooms.query.get(int(customerid))
 
-    def load_userss(messid):
+    # @login_manager.user_loader
+    def load_userssss(messid):
         return Mess.query.get(int(messid)) 
 
-    def load_userss(laundryid):
+    # @login_manager.user_loader
+    def load_usersss(laundryid):
         return Laundry.query.get(int(laundryid))        
 
         #we use DB Browser for sqlite database
@@ -63,6 +82,6 @@ def create_app():
 
 
 def create_database(app):       # function for creating database with the name of db.sqlite
-     if not path.exists('website/' + db.sqlite):
+     if not path.exists('/website' + db.postgredatabase()):
         db.create_all(app=app)
         print('Created Database!')

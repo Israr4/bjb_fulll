@@ -1,0 +1,14 @@
+1.create repo.
+2.create a readme file.
+ create a branch
+create a folder that you want to push on github     // git clone isi folder ma karna ha
+
+git clone   https://Israr4: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@github.com/Israr4/lane_marking_traffic_xodr-.git
+                    username    token
+                    token will be access from setting    developer setting and then copy the path of classic token
+                    if we git clone then the folder with a name of repo will automatically generated
+                    after git clone      code .
+                   
+                    then create changes
+                    
+                    tokenpath     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 

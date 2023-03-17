@@ -4,7 +4,10 @@ from . import db
 from flask_sqlalchemy import SQLAlchemy
 from flask import request
 
-
+# sqlite,postgresql,oracle and mysql is a database storage engine used to store and retrieve structural data from files
+# while
+# sqlalchemy is  a python library which provide object relational model 
+ 
 
 class User(db.Model,UserMixin):
     __tablename__ = "user"

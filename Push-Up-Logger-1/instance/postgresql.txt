@@ -1,0 +1,30 @@
+sudo -u postgres psql
+
+postgres=# show data_directory;     by default postgresql ki files is folder ma pari hoti han
+postgres=# show config_file;        #is sa pata chala ga ka hamari config file kaha pari ha
+
+postgres=# select name,setting from pg_settings;
+postgres=# select distinct context from pg_settings;
+
+#upar commands ki madada sa jo 315 parameter show kaara g aus aka andar bi bahut sa parameter ho g ajin ko hum edit ka lia likhan ga
+
+sudo -u postgres -i
+cd /var/lib/postgresql/12/main  or   cd /etc/postgresql/12/main
+ls -lrt            
+vi postgresql.conf            #to show that file   so we can see files in the parameter to modify it 
+
+#  modifying postgesql.config_file
+   as we show that there is a issue with password authentication so we edit files of authentication paraamete 
+
+   alter system set password_encryption = 'scram-sha-256';
+   postgres=# \password postgres      #to change the password
+
+#alter commandds can be seen in postgres.auto.config
+
+
+#after modifying we run this command
+sudo systemctl restart postgresql
+
+
+
+\q   # to quit from postgres=#

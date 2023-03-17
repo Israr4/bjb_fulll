@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for
+from flask import Blueprint, render_template, request, flash, redirect, url_for, Response
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required, current_user
 from .model import User
@@ -9,6 +9,20 @@ from .model import AdminUser
 from .model import Laundry
 from . import db
 import re    #for email validation  (function for all types of validation)
+from flask.helpers import send_file
+
+
+import subprocess
+import shlex
+from subprocess import Popen, PIPE
+from subprocess import check_output
+from os import path
+import os
+
+
+#postress sql
+#pg admin
+
 
 
 auths = Blueprint('auths', __name__)
@@ -16,6 +30,82 @@ auths = Blueprint('auths', __name__)
 
 
 #  @ ka sat auths variable use ho ga lekin url_for ka lia blueprint name ' ' use ho ga
+
+# def get_shell_script_output_using_communicate():
+#     session = Popen(['./newshellscript.sh'], stdout=PIPE, stderr=PIPE)
+#     stdout, stderr = session.communicate()
+#     if stderr:
+#         raise Exception("Error "+str(stderr))
+#     return stdout.decode('utf-8')
+
+# def get_shell_script_output_using_check_output():
+#     stdout = check_output(['/home/maanz-ai/Desktop/finalyearproject/bjb_fulll/Push-Up-Logger-1/mathpractice_ws && newshellscript.sh']).decode('utf-8')
+
+
+# @auths.route('/s',methods=['GET'])
+# def home():
+# #     # return send_file(f'/home/maanz-ai/mathpractice_ws/./shellscript.sh', mimetype="file.sh", conditional=True)
+# #     #  return Response(new, mimetype="file.sh")
+
+
+#     cmd = ['/home/maanz-ai/mathpractice_ws/./shellscript.sh']
+#     return subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, executable='/bin/bash')
+    
+
+# def get_shell_script_output_using_check_output():
+#     (subprocess.run(["home/mathpractice_ws/shellscript.sh"], shell=False)) 
+
+# @auths.route('/s',methods=['GET'])
+# def go():
+#     return get_shell_script_output_using_check_output()
+
+
+
+# def get_shell_script_output_using_check_output():
+#     app_path = os.getcwd()
+#     path = app_path + os.path.sep 
+#     os.chdir(path)
+#     subprocess.run(["/home/maanz-ai/mathpractice_ws/bash shellscript.sh"])
+
+# @auths.route('/s',methods=['GET'])
+# def go():    
+#     return get_shell_script_output_using_check_output()
+
+
+
+# def get_shell_script_output_using_check_output():
+#     stdout = check_output(['/home/maanz-ai/mathpractice_ws/./shellscript.sh']).decode('utf-8')
+#     return stdout
+
+
+# @auths.route('/s',methods=['GET'])
+# def home():
+#     return '<pre>'+get_shell_script_output_using_check_output()+'</pre>'
+
+
+
+
+
+cmd = ['/home/maanz-ai/mathpractice_ws/./shellscript.sh']   # we write this for run the shell script
+def execute(cmd):
+    os.system(cmd)
+
+
+@auths.route('/s', methods = ['GET'])
+def executeScript():
+    output = execute('/home/maanz-ai/mathpractice_ws/./shellscript.sh')
+    return output
+
+
+
+
+
+
+
+
+
+
+
 
 @auths.route('/login')
 def login():
@@ -151,9 +241,9 @@ def signup_admin_post():
         new_user = AdminUser(adminemail=email, adminfullname=name, adminpassword=generate_password_hash(password, method='sha256'))
         db.session.add(new_user)
         db.session.commit()
-        # login_user(new_user, remember=True)
+        login_user(new_user, remember=True)
         flash('Account created!', category='success')
-        return render_template('admin_profile.html') #auth  blueprint ka nam ha
+        return redirect(url_for('auths.loginadmin')) #auth  blueprint ka nam ha
 
     # return render_template("signup.html", user=current_user)   
     return redirect(url_for('auths.signupadmin'))  #agar email pehla ka ho ga to flash (email alredy exist) to sho

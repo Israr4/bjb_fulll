@@ -47,7 +47,7 @@ def user_workouts():
 @login_required
 def all_clients():
     students = User.query.all()
-    return render_template('admin_profile.html', students=students)
+    return render_template('admin_profile.html', students=students)  # students variable ko retun karayan ga render template ma tab hi yeh kisi template ma insert ho ga
 
 @view.route("/allstaff")                                                                                         #READ
 @login_required
