@@ -58,6 +58,9 @@ class AdminUser(db.Model,UserMixin):
 
     def get_id(self):                     # this function is used to avoid
            return (self.adminid)
+    
+
+    
 
 class Mess(db.Model):
     messid = db.Column(db.Integer, primary_key=True)

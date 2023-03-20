@@ -31,3 +31,9 @@ if __name__ == '__main__':
 
 
 # sudo chmod +x newshellscript.sh               to solve the problem premision denied
+
+
+
+
+
+# to create your own packages and send it to  your own servers.

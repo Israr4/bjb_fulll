@@ -13,13 +13,13 @@ cd /var/lib/postgresql/12/main  or   cd /etc/postgresql/12/main
 ls -lrt            
 vi postgresql.conf            #to show that file   so we can see files in the parameter to modify it 
 
-#  modifying postgesql.config_file
+#  modifying postgresql.config_file
    as we show that there is a issue with password authentication so we edit files of authentication paraamete 
 
    alter system set password_encryption = 'scram-sha-256';
    postgres=# \password postgres      #to change the password
 
-#alter commandds can be seen in postgres.auto.config
+#alter commands can be seen in postgres.auto.config
 
 
 #after modifying we run this command
