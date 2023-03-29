@@ -36,23 +36,26 @@ class Rooms(db.Model,UserMixin):
     customerid = db.Column(db.Integer, primary_key=True)  # primary keys are required by SQLAlchemy
     customeremail = db.Column(db.String(100), unique=True)
     customerfullname = db.Column(db.String(1000))
-    customercontactno = db.Column(db.Integer, unique=True)
-    customercnic = db.Column(db.Integer, unique=True)
+    customercontactno = db.Column(db.BIGINT, unique=True)
+    customercnic = db.Column(db.VARCHAR, unique=True)
     customeraddress = db.Column(db.String(1000))
     customertotalduration = db.Column(db.String(1000))
-    customerseater = db.Column(db.Integer)
+    customerseater = db.Column(db.VARCHAR)
     customerroomno = db.Column(db.Integer,unique=True)
     customerfees = db.Column(db.Integer)
     customer_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def get_id(self):                     # this function is used to avoid
            return (self.customerid)
+    
+
+    
 
 
 class AdminUser(db.Model,UserMixin):
     adminid = db.Column(db.Integer, primary_key=True)  # primary keys are required by SQLAlchemy
     adminemail = db.Column(db.String(100), unique=True)
-    adminpassword = db.Column(db.String(100))
+    adminpassword = db.Column(db.VARCHAR(100))
     adminfullname = db.Column(db.String(1000))
     adminrelation = db.relationship('Staff', backref='author', lazy=True)
 
