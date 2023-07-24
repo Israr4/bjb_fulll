@@ -1,0 +1,116 @@
+create repo with a readme file.
+
+create a folder that you want to push on github     // git clone isi folder ma karna ha
+
+git clone   https://Israr4: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@github.com/Israr4/C-Tasks.git
+                    username    token
+                    token will be access from setting    developer setting and then copy the path of classic token
+                    if we git clone then the folder with a name of repo will automatically generated
+                    after git clone      
+                    
+after that paste a folder that you want to push on github.
+then  code .
+ 
+create new branch                   
+                    then create change/commit
+                    
+                    tokenpath     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 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                   
+#if we push a code to repo first time then we only write a path of removing files in .gitignore file
+#like this   Cars_Collision/car             Cars_Collision/cars 
+
+#But if you push a code without writing that command then we have to write this command in git repo folder           git rm -r --cached Cars_Collision/cars 
+
+
+
+
+
+
+
+
+
+
+
+
+
+Question:::How to create a cmake files(Build, CMakeLists.txt, main.cpp)   manually????? 
+Answer:::::create CMakeLists.txt Main.cpp build files in current directory and 
+then write these commands
+
+cd build
+cmake ..
+
+make
+cmake ..
+./executablefilename
+------------------------------------------------------------------------------------------------------------
+rm -rf ./build/  (to remove build)
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------
+
+#how to link library with excutable
+#Ans
+
+add_library(
+    car_collision   #SHARED   STATIC   MODULE   types of library
+    src/car_collision.cpp
+    src/car_collision.h
+)
+add_executable(CarCollisions 
+               main.cpp)
+
+target_link_libraries(CarCollisions    PRIVATE   car_collision)
+#                     executablename              libraryname
+
+
+
+
+-------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+# To Use CImg Library we have to add these two library in cmakelist.txt file(X11  pthread)
+e.g
+target_link_libraries(DataVisualizer     PRIVATE   data_visualizer  X11  pthread)
+
+and with gcc compiler like that
+1.g++ main.cpp -o program -lX11
+2.g++ main.cpp -o program -pthread
+
+
+
+--------------------------------------------------------------------------------------------------------------
+
+#How to install clang format on linux
+
+1.sudo apt-get install clang-format
+2.open vscode file/preference/setting
+3.search clang-format
+4.In setting search "Clang-Format: Executable" and copy the path there.(path can be find by command "which clang-format".
+5.and save it.
+6.and also add this path to .vscode/settig.json             "clang-format.executable": "path"
+
+---------------------------------------------------------------------------------------------------------------
+
+1) add .clang-format file.
+2) Make variables private ( Never expose variable in a class unless it's necessary, It means someone from outside can make changes in your objects state which is not necessary)
+3) Make accessor functions to access these private variables.
+4) Make use of class variables instead of passing means jo hum function definition ma variable usi waqt declare karta han.
+
+
+
+-----------------------------------------------------------------------------------------------------------------
