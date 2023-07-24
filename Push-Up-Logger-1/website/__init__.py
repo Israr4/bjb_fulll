@@ -20,10 +20,12 @@ def create_app():
     from.auth import auths 
     app.register_blueprint(auths)
 
-
-    app.config['SECRET_KEY'] = 'hjshjhdjah kjshkjdhjs'    #Encypting session and cookies
+    from.views import vieww #views is a file name  and view is a variable in that file
+    app.register_blueprint(vieww) #blueprint is only to manage files
+    
+    app.config['SECRET_KEY'] = 'abchfgdhfgjjhjhjhjh'    #Encrypting session and cookies
     # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite' # Syntax for database
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:123456789@localhost/postgredatabase'  # postgresql = name of database(synatax),  postgres(default set)  = rootuser, tiger = 123456789, postgredatabase = name of database that we created
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:123456789@localhost/newpostgress'  # postgresql = name of database(syntax),  postgres(default set)  = rootuser, tiger = 123456789, postgredatabase = name of database that we created
      
     # DB_HOST = "localhost"
     # DB_NAME = "postgresql"
@@ -35,7 +37,7 @@ def create_app():
 
 
     from .model import User       # this code is used to store  data of signup details in database and with the help of this data we login
-    from .model import AdminUser
+    # from .model import AdminUser
     from .model import Staff
     from .model import Rooms
     from .model import Mess
@@ -43,18 +45,16 @@ def create_app():
     with app.app_context():  
         db.create_all()           # database with the name of db.sqlite in instance folder is created by calling the function for 
 
-    login_manager = LoginManager()    #database
+    login_manager = LoginManager()    #database 
+    
     login_manager.login_view = 'auths.login' 
     login_manager.login_view = 'auths.loginadmin'
     login_manager.init_app(app)
 
-    @login_manager.user_loader    #user loader tell flask login to find a specific  user from id that is stored in session cookies
+    @login_manager.user_loader
     def load_user(id):
         return User.query.get(int(id))
-# 
-    # @login_manager.user_loader
-    def load_userr(adminid):
-        return AdminUser.query.get(int(adminid))
+    
 
     # @login_manager.user_loader
     def load_users(idmodel):
@@ -80,7 +80,7 @@ def create_app():
 
 
 
-def create_database(app):       # function for creating database with the name of db.sqlite
-     if not path.exists('/website' + db.postgredatabase()):
-        db.create_all(app=app)
-        print('Created Database!')
+# def create_database(app):       # function for creating database with the name of db.sqlite
+#      if not path.exists('/website' + db.sqlite()):
+#         db.create_all(app=app)
+#         print('Created Database!')

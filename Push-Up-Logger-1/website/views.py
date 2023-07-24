@@ -7,11 +7,12 @@ from .model import Workout
 from .model import Rooms
 from .model import Mess
 from .model import Laundry
-from .model import AdminUser
-
+# from .model import AdminUser
 
 
 view = Blueprint('view', __name__)  # commas ma nam kuch bi ho sakta ha 
+
+
 
 
 @view.route('/')  #this view is a variable that we initialize above
@@ -19,21 +20,17 @@ def index():
    return render_template("index.html")   # it simply return the code written in index.html
 
 
-@view.route('/profile')
-@login_required
-def profile():
-   return render_template("profile.html",namme = current_user.fullname )  # it simply return the code written in profile.html
-
 @view.route('/adminprofile')
 @login_required
 def adminprofile():
-   return render_template("admin_profile.html",nammee = current_user.fullname )  # it simply return the code written in profile.html  and thats the form name
+   print('bbbbbbbbbbbbb')
+   return render_template("admin_profile.html" )  # it simply return the code written in profile.html  and thats the form name
    
 
 
 
 
-@view.route("/all")                                                                                         #READ
+@view.route("/all")                                                                                              #READ
 @login_required
 def user_workouts():
     page = request.args.get('page',1,type=int) # for pagination on url it will we shown
@@ -43,7 +40,7 @@ def user_workouts():
     return render_template('all_workouts.html', workouts=workouts, user=user)
 
 
-@view.route("/allclients")                                                                                         #READ
+@view.route("/allclients")                                                                                       #READ
 @login_required
 def all_clients():
     students = User.query.all()
@@ -55,7 +52,7 @@ def all_staff():
     staffs = Staff.query.all()
     return render_template('admin_profile.html', staffs=staffs)
 
-@view.route("/allroom")                                                                                         #READ
+@view.route("/allroom")                                                                                          #READ
 @login_required
 def all_rooms():
     roomss = Rooms.query.all()
@@ -172,3 +169,14 @@ def delete_staff(staff_id):
     db.session.commit()
     flash('Your post has been deleted!')
     return redirect(url_for('view.all_staff'))
+
+
+
+vieww = Blueprint('vieww', __name__)
+
+
+@view.route('/profile')
+@login_required
+def profile():
+   print('aaaaaaaaaaaaa')
+   return render_template("profile.html")  # it simply return the code written in profile.html

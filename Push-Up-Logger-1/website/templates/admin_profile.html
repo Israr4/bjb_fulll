@@ -1,8 +1,7 @@
 
 
 {% extends "base_admin.html" %} {% block head %} {{ super() }}
-<!-- block head   means that it over ride only head  of base.html  -->
-<!-- super is used to inherit every thing from parent class  -->
+
 <link
   rel="stylesheet"
   href="{{ url_for('static', filename= 'adminprofile.css') }}"
@@ -12,14 +11,14 @@
 
 {%block content%}
 
-    <!-- <h1>Welcome, {{namme}}!</h1>   It display current user name who logged in -->
+{# <!-- <h1>Welcome, {{namme}}!</h1>   It display current user name who logged in -->#}
  
 
 
 <section class="py-5 header">
   <div class="container py-10">
       <header class="text-center mb-5 pb-5 text-white">
-          <h1 class="display-4">{{namme}} Loginned</h1>
+          <h5 class="display-4">{{namme}} Loginned</h5>
           
       </header>
 
@@ -78,13 +77,13 @@
 
 
           <div class="col-md-9">
-              <!-- Tabs content -->
+              
               <div class="tab-content bg-white" style="height: 700px; overflow: auto" id="v-pills-tabContent">
 
 
                   <div class="tab-pane fade shadow rounded bg-white show active p-5" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                       <h4 class="font-italic mb-4">Home</h4>
-                      <p class="font-italic text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                      <p class="font-italic text-muted mb-2">Welcome To Admin Home Page.....................Here You See Info. About Admins </p>
                   </div>
                   
                 <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-registercustomer" role="tabpanel" aria-labelledby="v-pills-registercustomer-tab">
@@ -93,7 +92,7 @@
                   </h4>
           
                   <div class = "centered">
-                      <form method="POST"  action="/adminsignupclient" >   <!--yeh path wo ha jo auth ma hum na usa dia hua ha-->
+                      <form method="POST"  action="/adminsignupclient" >  
 
                        
                         <div class="form-group">
@@ -116,7 +115,7 @@
                               name="fullname"    
                               placeholder="Enter full name"
                             />
-                            <!--we use this name="fullname" in auth.py to request get it -->
+                          
                           </div>
 
                         <div class="form-group">
@@ -184,7 +183,7 @@
                       <h4 class="font-italic mb-4">Add Staff</h4>
 
                       <div class = "centered">
-                        <form method="POST"  action="/adminsignupstaff" >   <!--yeh path wo ha jo auth ma hum na usa dia hua ha-->
+                        <form method="POST"  action="/adminsignupstaff" >   
   
                          
                           <div class="form-group">
@@ -207,7 +206,7 @@
                                 name="phonenumber"    
                                 placeholder="Enter Phone number"
                               />
-                              <!--we use this name="fullname" in auth.py to request get it -->
+                            
                             </div>
   
                           <div class="form-group">
@@ -318,7 +317,6 @@
                                       name="phonenumber"    
                                       placeholder="Enter Phone number"
                                     />
-                                    <!--we use this name="fullname" in auth.py to request get it -->
                                   </div>
         
                                 <div class="form-group">
@@ -537,7 +535,7 @@
 
                   <div class="tab-pane fade shadow rounded bg-white p-5" id="v-pills-paymentmanagement" role="tabpanel" aria-labelledby="v-pills-paymentmanagement">
                     <h4 class="font-italic mb-4">Payment Management</h4>
-                    <p class="font-italic text-muted mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p class="font-italic text-muted mb-2">This is a payment management module</p>
                   </div>
 
 

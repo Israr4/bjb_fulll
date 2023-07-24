@@ -7,7 +7,7 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 
-
+# static variable and simple variable show difference in function
 # pip install flask
 # pip install flask-login
 # pip install flask-sqlalchemy
@@ -19,10 +19,10 @@ if __name__ == '__main__':
 # pip install psycopg2-binary
 # pip install python-dotenv
 
-# python include dynamic typing which means that we resign diferernt data type to same variable
+# python include dynamic typing which means that we reassign diferernt data type to same variable
 
 # var = 12
-# var = "Israr"       but in other langauges except puthon it gives error
+# var = "Israr"       but in other langauges except python it gives error
 
 
 
@@ -35,18 +35,7 @@ if __name__ == '__main__':
 
 
 
-
-
 # to create your own packages and send it to  your own servers.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -84,7 +84,7 @@
       <div class="ms-auto" id="navbarSupportedContent">
 
         {% if current_user.is_authenticated %}
-        <!-- <ul class="navbar-nav mr-auto">
+        {#<!-- <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a
               href="{{ url_for('view.user_workouts') }}"
@@ -106,7 +106,7 @@
         href="{{ url_for('view.new_workout') }}"
         class="btn btn-outline-primary"
         role="button"
-        >Add New Workout</a > -->
+        >Add New Workout</a > -->#}
 
         <a
         href="{{ url_for('auths.logout') }}"
